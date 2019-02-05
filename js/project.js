@@ -4,6 +4,10 @@ var project = {
             app.showTemplate('projectIssueList', { issueList: issueList, projectid: id}, 'pageContent');
         });
     },
+    prevList: function(limit, offset) {
+        offset -= limit;
+        project.list(offset);
+    },
     nextList: function(count, limit, offset) {
         if (count > (offset + limit)) {
             offset += limit;

@@ -26,7 +26,7 @@ var service = {
     },
     getProjects: function(offset, callback) {
         $.get(
-            service.url + '/projects.json?key=' + service.key+'&offset=' + offset + '&limit=50',
+            service.url + '/projects.json?key=' + service.key+'&offset=' + offset + '&limit=10',
             callback
         );
     },
