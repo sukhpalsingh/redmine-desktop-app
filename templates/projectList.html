@@ -1,0 +1,29 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">All</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#" onclick="project.listFavourites()">Favourites</a>
+  </li>
+</ul>
+
+<div class="list-group">
+{{#each projectList.projects}}
+    <a class="list-group-item" onclick="project.show({{this.id}})">
+        <h4 class="list-group-item-heading">{{this.name}}</h4>
+        <p class="list-group-item-text">{{this.description}}</p>
+    </a>
+{{/each}}
+</div>
+{{#ifCond projectList.total_count ">" projectList.limit}}
+<nav>
+  <ul class="pagination justify-content-center">
+    <li class="page-item disabled">
+      <a class="page-link" href="#" tabindex="-1">Previous</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="#" onclick="project.nextList({{projectList.total_count}}, {{projectList.limit}}, {{projectList.offset}})">Next</a>
+    </li>
+  </ul>
+</nav>
+{{/ifCond}}

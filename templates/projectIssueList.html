@@ -1,0 +1,34 @@
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link {{#ifCond tab "=" "all"}} active {{/ifCond}}" href="#" onclick="project.show({{projectid}})">All</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link {{#ifCond tab "=" "assigned"}} active {{/ifCond}}" href="#" onclick="issues.listAssigned()">Assigned</a>
+    </li>
+</ul>
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Tracker</th>
+            <th>Status</th>
+            <th>Priority</th>
+            <th>Subject</th>
+            <th>Author</th>
+            <th>Assignee</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each issueList.issues}}
+            <tr>
+                <td><a href="javascript: issues.edit({{this.id}})">{{this.id}}</a></td>
+                <td>{{this.tracker.name}}</td>
+                <td>{{this.status.name}}</td>
+                <td>{{this.priority.name}}</td>
+                <td>{{this.subject}}</td>
+                <td>{{this.author.name}}</td>
+                <td>{{this.assigned_to.name}}</td>
+            </tr>
+        {{/each}}
+    </tbody>
+</table>

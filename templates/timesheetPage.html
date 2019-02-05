@@ -1,0 +1,43 @@
+<div class="card">
+    <div class="card-header">
+        Timesheet
+    </div>
+    <div class="card-body">
+        <div class="container">
+            <div class="row">
+                <div class='col-sm-6'>
+                    <form class="form-inline">
+                        <button type="button" class="btn btn-primary btn-sm m-2" onclick="timesheet.showPrevWeek()">Prev Week</button>
+                        <div class="form-group">
+                            <input id="starting-date" type='text' class="form-control m-2 form-control-sm" value="{{ date }}" />
+                        </div>
+                        <a href="#" onclick="timesheet.showTimeSpentFromDate($('#starting-date').val())" class="btn btn-primary btn-sm pull-left">Submit</a>
+                        <button type="button" class="btn btn-primary btn-sm m-2" onclick="timesheet.showNextWeek()">Next Week</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Project</th>
+                    <th></th>
+                    {{#each times}}
+                        <th>{{this}}</th>
+                    {{/each}}
+                </tr>
+            </thead>
+            <tbody>
+                {{#each projectList}}
+                    <tr>
+                        <td>{{this.project}}</td>
+                        <td>{{this.alias}}</td>
+                        {{#each this.times}}
+                            <td>{{this}}</td>
+                        {{/each}}
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>

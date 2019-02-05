@@ -1,0 +1,16 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link" href="#">All</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" href="#" onclick="project.listFavourites()">Favourites</a>
+  </li>
+</ul>
+
+<div class="list-group">
+{{#each memberships}}
+    <a class="list-group-item" onclick="project.show({{this.project.id}})">
+        <h4 class="list-group-item-heading">{{this.project.name}}</h4>
+    </a>
+{{/each}}
+</div>
