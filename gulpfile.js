@@ -10,6 +10,7 @@ var rename = require('gulp-rename');
 gulp.task('css', function() {
     return gulp.src([
         'node_modules/bootstrap/dist/css/bootstrap.min.css',
+        'css/app.css'
     ])
     .pipe(concat('lib.css'))
     .pipe(gulp.dest('src/build/css'));
