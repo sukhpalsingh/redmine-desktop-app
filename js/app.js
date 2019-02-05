@@ -8,7 +8,7 @@ var app = {
         }
     },
     showTemplate: function(name, options, callback) {
-        $.get('build/templates/' + name + '.html', function(source) {
+        $.get('templates/' + name + '.html', function(source) {
             if (typeof options !== 'undefined') {
                 var template = Handlebars.compile(source);
                 source = template(options);
