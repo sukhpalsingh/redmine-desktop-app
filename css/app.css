@@ -1,5 +1,5 @@
 #main-menu {
-    background-color: #243238;
+    box-shadow: 0 .125rem .625rem rgba(90,97,105,.12);
 }
 
 .h-100 {
@@ -8,4 +8,8 @@
 
 .mt-50 {
     margin-top: 50%;
+}
+
+.b-light-white {
+    background: #f5f6f8;
 }
