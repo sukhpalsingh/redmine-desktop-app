@@ -11,6 +11,7 @@ gulp.task('css', function() {
     return gulp.src([
         'node_modules/bootstrap/dist/css/bootstrap.min.css',
         'node_modules/chosen-js/chosen.min.css',
+        'node_modules/@fortawesome/fontawesome-free/css/all.min.css',
         'css/app.css'
     ])
     .pipe(concat('lib.css'))
@@ -38,11 +39,11 @@ gulp.task('bootstrap', function() {
     .pipe(gulp.dest('src/build/fonts'));
 });
 
-gulp.task('templates', function() {
+gulp.task('webfonts', function() {
     return gulp.src([
-        'templates/*'
+        'node_modules/@fortawesome/fontawesome-free/webfonts/*'
     ])
-    .pipe(gulp.dest('src/build/templates'));
+    .pipe(gulp.dest('src/build/webfonts'));
 });
 
 // Watch Files For Changes
@@ -52,4 +53,4 @@ gulp.task('templates', function() {
 // });
 
 // Default Task
-gulp.task('default', ['css', 'scripts', 'bootstrap', 'templates']);
+gulp.task('default', ['css', 'scripts', 'bootstrap', 'webfonts']);

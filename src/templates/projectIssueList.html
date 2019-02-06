@@ -11,13 +11,51 @@
     <table class="table">
         <thead>
             <tr>
-                <th>#</th>
-                <th>Tracker</th>
-                <th>Status</th>
-                <th>Priority</th>
-                <th>Subject</th>
-                <th>Author</th>
-                <th>Assignee</th>
+                <th>
+                    <p>#</p>
+                    <p>
+                        <a href="#" onclick="issues.list('{{projectid}}', {{page}}, 'id')"><i class="fas fa-arrow-up"></i></a>
+                        <a href="#" onclick="issues.list('{{projectid}}', {{page}}, 'id:desc')"><i class="fas fa-arrow-down"></i></a>
+                    </p>
+                </th>
+                <th>
+                    <p>Tracker</p>
+                    <p>
+                        <a href="#" onclick="issues.list('{{projectid}}', {{page}}, 'tracker')"><i class="fas fa-arrow-up"></i></a>
+                        <a href="#" onclick="issues.list('{{projectid}}', {{page}}, 'tracker:desc')"><i class="fas fa-arrow-down"></i></a>
+                    </p>
+                </th>
+                <th>
+                    <p>Status</p>
+                    <p>
+                        <a href="#" onclick="issues.list('{{projectid}}', {{page}}, 'status')"><i class="fas fa-arrow-up"></i></a>
+                        <a href="#" onclick="issues.list('{{projectid}}', {{page}}, 'status:desc')"><i class="fas fa-arrow-down"></i></a>
+                    </p>
+                </th>
+                <th>
+                    <p>Priority</p>
+                    <p>
+                        <a href="#" onclick="issues.list('{{projectid}}', {{page}}, 'priority')"><i class="fas fa-arrow-up"></i></a>
+                        <a href="#" onclick="issues.list('{{projectid}}', {{page}}, 'priority:desc')"><i class="fas fa-arrow-down"></i></a>
+                    </p>
+                </th>
+                <th>
+                    <p>Subject</p>
+                </th>
+                <th>
+                    <p>Author</p>
+                    <p>
+                        <a href="#" onclick="issues.list('{{projectid}}', {{page}}, 'author')"><i class="fas fa-arrow-up"></i></a>
+                        <a href="#" onclick="issues.list('{{projectid}}', {{page}}, 'author:desc')"><i class="fas fa-arrow-down"></i></a>
+                    </p>
+                </th>
+                <th>
+                    <p>Assignee</p>
+                    <p>
+                        <a href="#" onclick="issues.list('{{projectid}}', {{page}}, 'assignee')"><i class="fas fa-arrow-up"></i></a>
+                        <a href="#" onclick="issues.list('{{projectid}}', {{page}}, 'assignee:desc')"><i class="fas fa-arrow-down"></i></a>
+                    </p>
+                </th>
             </tr>
         </thead>
         <tbody>
