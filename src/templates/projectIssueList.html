@@ -1,57 +1,60 @@
-<ul class="nav nav-tabs">
-    <li class="nav-item">
-      <a class="nav-link {{#ifCond tab "=" "all"}} active {{/ifCond}}" href="#" onclick="issues.list('{{projectid}}', 1)">All</a>
+<ul class="nav nav-tabs mx-3 mt-3 bg-info">
+    <li class="nav-item {{#ifCond tab "=" "all"}} active {{/ifCond}}">
+      <a class="nav-link text-white " href="#" onclick="issues.list('{{projectid}}', 1)">All</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link {{#ifCond tab "=" "assigned"}} active {{/ifCond}}" href="#" onclick="issues.listAssigned()">Assigned</a>
+    <li class="nav-item {{#ifCond tab "=" "assigned"}} active {{/ifCond}}">
+      <a class="nav-link text-white" href="#" onclick="issues.listAssigned()">Assigned</a>
     </li>
 </ul>
-<table class="table">
-    <thead>
-        <tr>
-            <th>#</th>
-            <th>Tracker</th>
-            <th>Status</th>
-            <th>Priority</th>
-            <th>Subject</th>
-            <th>Author</th>
-            <th>Assignee</th>
-        </tr>
-    </thead>
-    <tbody>
-        {{#each issueList.issues}}
+
+<div class="card bg-white mx-3 mb-3">
+    <table class="table">
+        <thead>
             <tr>
-                <td><a href="javascript: issues.edit({{this.id}})">{{this.id}}</a></td>
-                <td>{{this.tracker.name}}</td>
-                <td>{{this.status.name}}</td>
-                <td>{{this.priority.name}}</td>
-                <td>{{this.subject}}</td>
-                <td>{{this.author.name}}</td>
-                <td>{{this.assigned_to.name}}</td>
+                <th>#</th>
+                <th>Tracker</th>
+                <th>Status</th>
+                <th>Priority</th>
+                <th>Subject</th>
+                <th>Author</th>
+                <th>Assignee</th>
             </tr>
-        {{/each}}
-    </tbody>
-</table>
-{{#ifCond issueList.total_count ">" issueList.limit}}
-    <nav>
-        <ul class="pagination justify-content-center mt-3">
-            {{#ifCond prevPage "==" 0}}
-            <li id="prev-project-link" class="page-item disabled">
-            {{/ifCond}}
-            {{#ifCond prevPage ">" 0}}
-            <li id="prev-project-link" class="page-item">
-            {{/ifCond}}
-                <a
-                    class="page-link"
-                    href="#"
-                    tabindex="-1"
-                    onclick="issues.list('{{projectid}}', {{prevPage}})"
-                >Previous</a>
-            </li>
-            </li>
-            <li class="page-item">
-            <a class="page-link" href="#" onclick="issues.list('{{projectid}}', {{nextPage}})">Next</a>
-            </li>
-        </ul>
-    </nav>
-{{/ifCond}}
+        </thead>
+        <tbody>
+            {{#each issueList.issues}}
+                <tr>
+                    <td><a href="javascript: issues.edit({{this.id}})" class="text-secondary">{{this.id}}</a></td>
+                    <td>{{this.tracker.name}}</td>
+                    <td>{{this.status.name}}</td>
+                    <td>{{this.priority.name}}</td>
+                    <td>{{this.subject}}</td>
+                    <td>{{this.author.name}}</td>
+                    <td>{{this.assigned_to.name}}</td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    {{#ifCond issueList.total_count ">" issueList.limit}}
+        <nav>
+            <ul class="pagination justify-content-center mt-3">
+                {{#ifCond prevPage "==" 0}}
+                <li id="prev-project-link" class="page-item disabled">
+                {{/ifCond}}
+                {{#ifCond prevPage ">" 0}}
+                <li id="prev-project-link" class="page-item">
+                {{/ifCond}}
+                    <a
+                        class="page-link"
+                        href="#"
+                        tabindex="-1"
+                        onclick="issues.list('{{projectid}}', {{prevPage}})"
+                    >Previous</a>
+                </li>
+                </li>
+                <li class="page-item">
+                <a class="page-link" href="#" onclick="issues.list('{{projectid}}', {{nextPage}})">Next</a>
+                </li>
+            </ul>
+        </nav>
+    {{/ifCond}}
+</div>
