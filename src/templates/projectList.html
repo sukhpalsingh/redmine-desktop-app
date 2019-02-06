@@ -8,6 +8,12 @@
             <li class="nav-item float-left">
                 <a class="nav-link text-body" href="#" onclick="project.listFavourites()">Favourites</a>
             </li>
+            <li class="nav-item float-right">
+                <div class="input-group pt-1">
+                    <select id="project-list" class="form-control form-control-sm" onchange="project.show(this.value)">
+                    </select>
+                </div>
+            </li>
         </ul>
 
         <div class="list-group">

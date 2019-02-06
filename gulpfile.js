@@ -10,6 +10,7 @@ var rename = require('gulp-rename');
 gulp.task('css', function() {
     return gulp.src([
         'node_modules/bootstrap/dist/css/bootstrap.min.css',
+        'node_modules/chosen-js/chosen.min.css',
         'css/app.css'
     ])
     .pipe(concat('lib.css'))
@@ -20,6 +21,7 @@ gulp.task('css', function() {
 gulp.task('scripts', function() {
     return gulp.src([
         'node_modules/jquery/dist/jquery.min.js',
+        'node_modules/chosen-js/chosen.jquery.min.js',
         'node_modules/bootstrap/dist/js/bootstrap.bundle.min.js',
         'node_modules/handlebars/dist/handlebars.min.js',
         'node_modules/timrjs/dist/timr.js',

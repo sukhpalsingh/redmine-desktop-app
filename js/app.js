@@ -35,9 +35,7 @@ var app = {
             localStorage.currentUserId = data.user.id;
             app.showTemplate('homePage', { currentUser: data.user }, function(source) {
                 $('#page').html(source);
-                service.getProjects(0, function(projectList) {
-                    app.showTemplate('projectList', { projectList: projectList }, 'pageContent');
-                });
+                project.list(0);
             });
         });
     },

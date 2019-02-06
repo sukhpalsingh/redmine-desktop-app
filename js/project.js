@@ -1,4 +1,5 @@
 var project = {
+    names: [],
     show: function(id) {
         service.getIssues('project_id=' + id, function(issueList) {
             app.showTemplate('projectIssueList', { issueList: issueList, projectid: id}, 'pageContent');
@@ -15,8 +16,9 @@ var project = {
         }
     },
     list: function(offset) {
-        service.getProjects(offset, function(projectList) {
+        service.getProjects(offset, 10, function(projectList) {
             app.showTemplate('projectList', { projectList: projectList }, 'pageContent');
+            project.getAll(projectList.total_count);
         });
     },
     listFavourites: function(favourites) {
@@ -30,6 +32,40 @@ var project = {
             },
             'include=memberships'
         );
+    },
+    getAll: function(count) {
+        var rounds = Math.floor(count / 100) + (count % 100 > 0 ? 1 : 0);
+        var offset;
+        var deferreds = [];
+        for (var i = 0; i < rounds; i++) {
+            offset = i * 100;
+            deferreds.push(project.getProjectNames(offset));
+        }
+
+        $.when.apply($, deferreds).done(function() {
+            $('#project-list').html('<option value=""></option>');
+            for (var j = 0; j < project.names.length; j++) {
+                $('#project-list').append(
+                    '<option value="' + project.names[j].identifier + '">' + project.names[j].name + '</option>'
+                );
+            }
+
+            $('#project-list').chosen({disable_search_threshold: 10, width: "100%"});
+            console.log(project.names);
+        });
+    },
+    getProjectNames: function(offset) {
+        var promise = new $.Deferred();
+        service.getProjects(offset, 100, function(projectList) {
+            var projectDetails;
+            for (var i = 0; i < projectList.projects.length; i++) {
+                projectDetails = projectList.projects[i];
+                project.names.push({identifier: projectDetails.identifier, name: projectDetails.name});
+            }
+            promise.resolve();
+        })
+
+        return promise;
     }
 };
 
