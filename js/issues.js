@@ -46,5 +46,16 @@ var issues = {
         service.getIssues('assigned_to_id=me&status_id=open', function(issueList) {
             app.showTemplate('projectIssueList', { issueList: issueList, tab: 'assigned'}, 'pageContent');
         });
+    },
+    list: function(projectId, page) {
+        app.showLoading();
+        var offset = (page - 1) * 25;
+        service.getIssues(
+            'project_id=' + projectId + '&limit=25&offset=' + offset,
+            function(issueList) {
+                app.showTemplate('projectIssueList', { issueList: issueList, projectid: projectId, page: page, nextPage: page + 1, prevPage: page - 1}, 'pageContent');
+                app.hideLoading();
+            }
+        );
     }
 };

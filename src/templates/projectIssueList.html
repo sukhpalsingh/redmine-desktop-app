@@ -1,6 +1,6 @@
 <ul class="nav nav-tabs">
     <li class="nav-item">
-      <a class="nav-link {{#ifCond tab "=" "all"}} active {{/ifCond}}" href="#" onclick="project.show({{projectid}})">All</a>
+      <a class="nav-link {{#ifCond tab "=" "all"}} active {{/ifCond}}" href="#" onclick="issues.list('{{projectid}}', 1)">All</a>
     </li>
     <li class="nav-item">
       <a class="nav-link {{#ifCond tab "=" "assigned"}} active {{/ifCond}}" href="#" onclick="issues.listAssigned()">Assigned</a>
@@ -32,3 +32,26 @@
         {{/each}}
     </tbody>
 </table>
+{{#ifCond issueList.total_count ">" issueList.limit}}
+    <nav>
+        <ul class="pagination justify-content-center mt-3">
+            {{#ifCond prevPage "==" 0}}
+            <li id="prev-project-link" class="page-item disabled">
+            {{/ifCond}}
+            {{#ifCond prevPage ">" 0}}
+            <li id="prev-project-link" class="page-item">
+            {{/ifCond}}
+                <a
+                    class="page-link"
+                    href="#"
+                    tabindex="-1"
+                    onclick="issues.list('{{projectid}}', {{prevPage}})"
+                >Previous</a>
+            </li>
+            </li>
+            <li class="page-item">
+            <a class="page-link" href="#" onclick="issues.list('{{projectid}}', {{nextPage}})">Next</a>
+            </li>
+        </ul>
+    </nav>
+{{/ifCond}}

@@ -9,7 +9,7 @@
 
 <div class="list-group">
 {{#each memberships}}
-    <a class="list-group-item" onclick="project.show({{this.project.id}})">
+    <a class="list-group-item" onclick="issues.list({{this.project.id}}, 1)">
         <h4 class="list-group-item-heading">{{this.project.name}}</h4>
     </a>
 {{/each}}

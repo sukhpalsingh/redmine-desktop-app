@@ -10,7 +10,7 @@
             </li>
             <li class="nav-item float-right">
                 <div class="input-group pt-1">
-                    <select id="project-list" class="form-control form-control-sm" onchange="project.show(this.value)">
+                    <select id="project-list" class="form-control form-control-sm" onchange="issues.list(this.value, 1)">
                     </select>
                 </div>
             </li>
@@ -18,7 +18,7 @@
 
         <div class="list-group">
         {{#each projectList.projects}}
-            <a class="list-group-item" onclick="project.show({{this.id}})">
+            <a class="list-group-item" onclick="issues.list({{this.id}}, 1)">
                 <h4 class="list-group-item-heading">{{this.name}}</h4>
                 <p class="list-group-item-text">{{this.description}}</p>
             </a>

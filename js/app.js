@@ -45,6 +45,15 @@ var app = {
         localStorage.removeItem('url');
         localStorage.removeItem('apiKey');
         app.showRootPage();
+    },
+    showLoading: function() {
+        $('#overlay').removeClass('d-none');
+        $('#page-container').css('overflow', 'hidden');
+        $('#page-container').scrollTop();
+    },
+    hideLoading: function() {
+        $('#overlay').addClass('d-none');
+        $('#page-container').css('overflow', 'visible');
     }
 };
 
